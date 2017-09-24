@@ -1,0 +1,71 @@
+dist: trusty
+language: c
+cache: ccache
+
+branches:
+  only:
+    - master
+
+notifications:
+  email: false
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-6
+      - g++-6
+      - make
+      - automake
+      - autoconf
+      - libtool
+      - curl
+      - ccache
+      - git
+      - file
+      - patch
+      - quilt
+      - gawk
+      - fakeroot
+      - gettext
+      - bzip2
+      - unzip
+      - xz-utils
+      - python
+      - zlib1g-dev
+      - libncurses5-dev
+      - libstdc++-6-dev
+
+env:
+  matrix:
+    - SDK_URL=https://downloads.openwrt.org/snapshots/targets/ar71xx/generic/openwrt-sdk-ar71xx-generic_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+    - SDK_URL=https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-sdk-ramips-mt7620_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+  global:
+    - secure: "hy7xKqMS+A1HSETz/ZLL4u8lcv7nOzBA9WGalVr5cym61erqEySDum2ZRhfbyFir8KEoGTuORdoOhxEslYxVLKXZUKk4XNgrHUlQmRKIa4rALj+50ae8OE1GpFKA4HDVE6RF36eDwVetB4zM5FVH4yzIAbpKNK0GyNblSNHOzWOQXab1eKVeY4UP/KrcspprqaE2GFL8+eh7sXd4aZ6dgxO33/ppnfGIR9TmtkyTAQILdoDlbvZC/ELKPpYpe5SwwPtVNEKCDpGdtLCGc1hDapeIMqAtgI0ox2kUXAqKeCtg8Z4cDHqoDlKFK4+OE8MgaVVfS3W7y3dDUOJVqWa2Vx/CEOb0OIAbM7EkXe/H2ImuKYfOuRk7SJMi6pMyrBqMInKZ7N9l77mZ6lb5tWMsVSvypApurZoXOTtVUESg2l2YmX0OUc5FO5bm89oDcPW+JXN0PGcs3Sw0SVsilvwdoDDMfpm0BrIbNbwDbG560HbBG6bcOlIqCDIFuX7YUGV4sqbDTJKR9gfqrJK8+35mEidHpaKd6j0YSbBdENca/MLfb/r0j1+X7ucjBuYqid1b+zVydwzyytT9/+TJB6hFAfy36e0zX21krt97n+qdzTGFx/Xj59swAiNWvnOddL0jVig2aH8bAFbSopZPJwwZNw8bJjVdN4SmL+E3VYwW2gg="
+
+install:
+  - git clone https://github.com/openwrt-dev/po2lmo.git
+  - pushd po2lmo
+  - make && sudo make install && make clean
+  - popd
+  - rm -rf po2lmo
+
+before_script:
+  - export TZ=Asia/Shanghai
+  - export ARCH=$(sed -n 's/.*openwrt-sdk-*\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL | awk -F- '{print $1}')
+
+script:
+  - bash compile.sh
+
+deploy:
+  provider: pages
+  local-dir: release
+  target-branch: ${ARCH}
+  keep-history: true
+  skip-cleanup: true
+  github-token: ${token}
+  name: Travis CI
+  email: travis.ci.build@gmail.com
+  on:
+    branch: master

@@ -1,0 +1,21 @@
+[submodule "net/luci-app-shadowsocks"]
+	path = net/luci-app-shadowsocks
+	url = https://github.com/openwrt-dev/luci-app-shadowsocks.git
+[submodule "net/openwrt-dist-luci"]
+	path = net/openwrt-dist-luci
+	url = https://github.com/openwrt-dev/openwrt-dist-luci.git
+[submodule "net/openwrt-shadowsocks"]
+	path = net/openwrt-shadowsocks
+	url = https://github.com/shadowsocks/openwrt-shadowsocks.git
+[submodule "net/openwrt-chinadns"]
+	path = net/openwrt-chinadns
+	url = https://github.com/aa65535/openwrt-chinadns.git
+[submodule "net/openwrt-dns-forwarder"]
+	path = net/openwrt-dns-forwarder
+	url = https://github.com/aa65535/openwrt-dns-forwarder.git
+[submodule "net/openwrt-simple-obfs"]
+	path = net/openwrt-simple-obfs
+	url = https://github.com/aa65535/openwrt-simple-obfs.git
+[submodule "net/openwrt-shadowvpn"]
+	path = net/openwrt-shadowvpn
+	url = https://github.com/openwrt-dev/openwrt-shadowvpn.git
