@@ -42,7 +42,7 @@ env:
     - SDK_URL=https://downloads.openwrt.org/snapshots/targets/ar71xx/generic/openwrt-sdk-ar71xx-generic_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-sdk-ramips-mt7620_gcc-7.3.0_musl.Linux-x86_64.tar.xz
   global:
-    - secure: "hy7xKqMS+A1HSETz/ZLL4u8lcv7nOzBA9WGalVr5cym61erqEySDum2ZRhfbyFir8KEoGTuORdoOhxEslYxVLKXZUKk4XNgrHUlQmRKIa4rALj+50ae8OE1GpFKA4HDVE6RF36eDwVetB4zM5FVH4yzIAbpKNK0GyNblSNHOzWOQXab1eKVeY4UP/KrcspprqaE2GFL8+eh7sXd4aZ6dgxO33/ppnfGIR9TmtkyTAQILdoDlbvZC/ELKPpYpe5SwwPtVNEKCDpGdtLCGc1hDapeIMqAtgI0ox2kUXAqKeCtg8Z4cDHqoDlKFK4+OE8MgaVVfS3W7y3dDUOJVqWa2Vx/CEOb0OIAbM7EkXe/H2ImuKYfOuRk7SJMi6pMyrBqMInKZ7N9l77mZ6lb5tWMsVSvypApurZoXOTtVUESg2l2YmX0OUc5FO5bm89oDcPW+JXN0PGcs3Sw0SVsilvwdoDDMfpm0BrIbNbwDbG560HbBG6bcOlIqCDIFuX7YUGV4sqbDTJKR9gfqrJK8+35mEidHpaKd6j0YSbBdENca/MLfb/r0j1+X7ucjBuYqid1b+zVydwzyytT9/+TJB6hFAfy36e0zX21krt97n+qdzTGFx/Xj59swAiNWvnOddL0jVig2aH8bAFbSopZPJwwZNw8bJjVdN4SmL+E3VYwW2gg="
+    - secure: "q6XJxel6ViwCx10LgW9rbvwhMpb+794OjzYCKZ0QRGQbeQdTV6L6MYDTqQZARvpXM6fn9cSmiDF5qSBkVsOabVcShh6x4N3JTYegMhDeQ9yo/BpNWMTsSvA9LAEiK83Tcs31GXPbAEr0KEoy4rA1RFwhO2AdL/E1qEpstfLOMCixXk8rZ/V5k0duJzwzytj567fLRzLm30jYZ91E/yyClUdzhh2xPGP0lEN7Kp9P5vdLlUY56yGUpyd2X5PeKSJzU2r7oEgbHPLp+xX1iPGxN7ZeqGdweB/zClSOG58wVjMLg7eaFwbz+18g/kdRJTO+RkAqX1OyoCmH8ZsnXlXR0o29radRy43qXy0sASZO7vJzP7GD6Dt8xJUOYQZ4cOcNfW0LdSRYrBQfc7O5mQ5D+2uFJAClKX72ZnuNLLISLqScj7mQUym2TULcdkYVwjJhewvuYQdLvWwpW2KzQR48VrqWoc9V03Spu6hamDmcW0qvOGe+ftsgjPjKYVPEz6cZ2KN+ZqR+DqfGbk9+vmgVBrgrLUfmuuSI8limiHYwZT1OtEH+XmeeF9ZGSFL/m1CcMO2dlBP/TfugSR5KUrrEaCLnbIRC+GewadPNmGAxH+HNRSOVcG2FrRWLtV7KW4usPlBNhhch8IxufyGOcjgcOAgNEQyIWU6fcSITXwO0GJQ="
 
 install:
   - git clone https://github.com/openwrt-dev/po2lmo.git
@@ -64,7 +64,7 @@ deploy:
   target-branch: ${ARCH}
   keep-history: true
   skip-cleanup: true
-  github-token: ${token}
+  github-token: ${GITHUB_TOKEN}
   name: Travis CI
   email: travis.ci.build@gmail.com
   on:
