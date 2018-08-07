@@ -65,7 +65,5 @@ deploy:
   keep-history: true
   skip-cleanup: true
   github-token: ${GITHUB_TOKEN}
-  name: Travis CI
-  email: travis.ci.build@gmail.com
   on:
     branch: master
