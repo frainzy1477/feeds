@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 language: c
 cache: ccache
 
@@ -11,31 +11,50 @@ notifications:
 
 addons:
   apt:
-    sources:
-      - ubuntu-toolchain-r-test
     packages:
-      - gcc-6
-      - g++-6
-      - make
       - automake
       - autoconf
+      - gcc
+      - g++
+      - make
       - libtool
-      - curl
+      - build-essential
       - ccache
-      - git
       - file
+      - git
       - patch
+      - curl
+      - fakeroot
       - quilt
       - gawk
-      - fakeroot
       - gettext
-      - bzip2
-      - unzip
-      - xz-utils
+      - pkg-config
       - python
-      - zlib1g-dev
+      - libssl-dev
       - libncurses5-dev
-      - libstdc++-6-dev
+      - zlib1g-dev
+      - asciidoc
+      - bc
+      - binutils
+      - flex
+      - intltool
+      - perl-modules
+      - python-dev
+      - libpython-dev
+      - rsync
+      - xsltproc
+      - time
+      - groff
+      - help2man
+      - rpm
+      - texinfo
+      - libattr1-dev
+      - bzip2
+      - gzip
+      - tar
+      - xz-utils
+      - unzip
+      # libstdc++-6-dev
 
 env:
   matrix:
@@ -43,6 +62,7 @@ env:
     - SDK_URL=https://downloads.openwrt.org/snapshots/targets/ramips/mt7620/openwrt-sdk-ramips-mt7620_gcc-7.3.0_musl.Linux-x86_64.tar.xz
   global:
     - secure: "q6XJxel6ViwCx10LgW9rbvwhMpb+794OjzYCKZ0QRGQbeQdTV6L6MYDTqQZARvpXM6fn9cSmiDF5qSBkVsOabVcShh6x4N3JTYegMhDeQ9yo/BpNWMTsSvA9LAEiK83Tcs31GXPbAEr0KEoy4rA1RFwhO2AdL/E1qEpstfLOMCixXk8rZ/V5k0duJzwzytj567fLRzLm30jYZ91E/yyClUdzhh2xPGP0lEN7Kp9P5vdLlUY56yGUpyd2X5PeKSJzU2r7oEgbHPLp+xX1iPGxN7ZeqGdweB/zClSOG58wVjMLg7eaFwbz+18g/kdRJTO+RkAqX1OyoCmH8ZsnXlXR0o29radRy43qXy0sASZO7vJzP7GD6Dt8xJUOYQZ4cOcNfW0LdSRYrBQfc7O5mQ5D+2uFJAClKX72ZnuNLLISLqScj7mQUym2TULcdkYVwjJhewvuYQdLvWwpW2KzQR48VrqWoc9V03Spu6hamDmcW0qvOGe+ftsgjPjKYVPEz6cZ2KN+ZqR+DqfGbk9+vmgVBrgrLUfmuuSI8limiHYwZT1OtEH+XmeeF9ZGSFL/m1CcMO2dlBP/TfugSR5KUrrEaCLnbIRC+GewadPNmGAxH+HNRSOVcG2FrRWLtV7KW4usPlBNhhch8IxufyGOcjgcOAgNEQyIWU6fcSITXwO0GJQ="
+    - TZ: "Asia/Shanghai"
 
 install:
   - git clone https://github.com/openwrt-dev/po2lmo.git
@@ -52,7 +72,6 @@ install:
   - rm -rf po2lmo
 
 before_script:
-  - export TZ=Asia/Shanghai
   - export ARCH=$(sed -n 's/.*openwrt-sdk-*\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL | awk -F- '{print $1}')
 
 script:

@@ -1,12 +1,12 @@
 #!/bin/bash -e
 
 function prepare() {
-  curl -kL $SDK_URL > openwrt-sdk.tar.xz
+  curl -kLs $SDK_URL > openwrt-sdk.tar.xz
   tar xfJ openwrt-sdk.tar.xz && rm openwrt-sdk.tar.xz
   mv openwrt-sdk-$ARCH-* openwrt-$ARCH
 
   pushd openwrt-$ARCH
-  git clone https://github.com/openwrt-dev/feeds.git package/custom
+  git clone https://github.com/openwrt-dev/feeds.git --single-branch package/custom
   pushd package/custom && git submodule update --init --recursive && popd
   popd
 }
