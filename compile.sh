@@ -3,7 +3,7 @@
 function prepare() {
   curl -kLs $SDK_URL > openwrt-sdk.tar.xz
   tar xfJ openwrt-sdk.tar.xz && rm openwrt-sdk.tar.xz
-  mv openwrt-sdk-$ARCH-* openwrt-$ARCH
+  mv openwrt-sdk-*-$ARCH-* openwrt-$ARCH
 
   pushd openwrt-$ARCH
   git clone https://github.com/openwrt-dev/feeds.git --single-branch package/custom
