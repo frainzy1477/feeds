@@ -16,6 +16,3 @@
 [submodule "net/openwrt-simple-obfs"]
 	path = net/openwrt-simple-obfs
 	url = https://github.com/aa65535/openwrt-simple-obfs.git
-[submodule "net/openwrt-shadowvpn"]
-	path = net/openwrt-shadowvpn
-	url = https://github.com/openwrt-dev/openwrt-shadowvpn.git
