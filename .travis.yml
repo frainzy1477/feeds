@@ -12,46 +12,27 @@ notifications:
 addons:
   apt:
     packages:
-      - automake
-      - autoconf
       - gcc
       - g++
       - make
+      - automake
+      - autoconf
       - libtool
-      - build-essential
+      - git
       - ccache
       - file
-      - git
       - patch
       - curl
-      - fakeroot
       - quilt
       - gawk
+      - fakeroot
       - gettext
       - pkg-config
       - python
+      - zlib1g-dev
       - libssl-dev
       - libncurses5-dev
-      - zlib1g-dev
-      - asciidoc
-      - bc
-      - binutils
-      - flex
-      - intltool
-      - perl-modules
-      - python-dev
-      - libpython-dev
-      - rsync
-      - xsltproc
-      - time
-      - groff
-      - help2man
-      - rpm
-      - texinfo
-      - libattr1-dev
       - bzip2
-      - gzip
-      - tar
       - xz-utils
       - unzip
       # libstdc++-6-dev
