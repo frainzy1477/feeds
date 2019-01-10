@@ -4,7 +4,7 @@ function prepare() {
   SDK_DIR=openwrt-sdk-$ARCH
 
   curl -kLs $SDK_URL | tar xfJ -
-  mv $(ls) $SDK_DIR
+  mv $(ls | sort | grep openwrt) $SDK_DIR
 
   pushd $SDK_DIR
   git clone https://github.com/openwrt-dev/feeds.git --single-branch package/custom
