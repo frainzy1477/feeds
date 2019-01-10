@@ -39,10 +39,14 @@ function compile() {
   make package/openwrt-simple-obfs/compile V=w \
     CONFIG_SIMPLE_OBFS_STATIC_LINK=y
 
+  ./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "OpenWRT feeds build key"
+  make package/index V=s
+
   popd
 }
 
 function release() {
+  mkdir release
   cp -r openwrt-$ARCH/bin/packages/*/base release
 }
 
