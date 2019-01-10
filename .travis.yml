@@ -54,7 +54,7 @@ install:
   - rm -rf po2lmo
 
 before_script:
-  - export ARCH=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
+  - export ARCH=$(basename $SDK_URL | sed -n 's/openwrt-sdk-[0-9.]*-\(\w*-\w*\).*_gcc.*/\1/p')
 
 script:
   - bash compile.sh
