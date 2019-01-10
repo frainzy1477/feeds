@@ -25,21 +25,22 @@ addons:
       - curl
       - quilt
       - gawk
+      - time
       - fakeroot
       - gettext
       - pkg-config
       - python2.7-minimal
-      - zlib1g-dev
       - libssl-dev
       - libncurses5-dev
+      - zlib1g-dev
       - bzip2
       - xz-utils
       - unzip
-      - time
 
 env:
   matrix:
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.1/targets/ar71xx/generic/openwrt-sdk-18.06.1-ar71xx-generic_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+    - SDK_URL=https://downloads.openwrt.org/releases/18.06.1/targets/ar71xx/tiny/openwrt-sdk-18.06.1-ar71xx-tiny_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.1/targets/ramips/mt7620/openwrt-sdk-18.06.1-ramips-mt7620_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.1/targets/x86/64/openwrt-sdk-18.06.1-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
   global:
