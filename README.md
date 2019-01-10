@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/openwrt-dev/feeds.svg?branch=master)](https://travis-ci.org/openwrt-dev/feeds)
 
+### Build
+
 ```bash
 apt-get install gcc g++ make automake autoconf libtool git \
     ccache file patch curl quilt gawk fakeroot gettext bzip2 time \
@@ -14,6 +16,21 @@ git submodule update --remote --merge
 
 # ...
 # See compile.sh
+```
+
+### Usage
+
+Setup opkg configs following those lines:
+
+```bash
+# ar71xx-generic / ar71xx-tiny
+src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/ar71xx/base
+
+# ramips-mt7620
+src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/ramips/base
+
+# x86-64
+src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/x86/base
 ```
 
 ### Upstreams
