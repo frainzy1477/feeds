@@ -1,18 +1,19 @@
 #!/bin/bash -e
 
 function prepare() {
-  curl -kLs $SDK_URL > openwrt-sdk.tar.xz
-  tar xfJ openwrt-sdk.tar.xz && rm openwrt-sdk.tar.xz
-  mv openwrt-sdk-*-$ARCH-* openwrt-$ARCH
+  SDK_DIR=openwrt-sdk-$ARCH
 
-  pushd openwrt-$ARCH
+  curl -kLs $SDK_URL | tar xfJ -
+  mv $(ls) $SDK_DIR
+
+  pushd $SDK_DIR
   git clone https://github.com/openwrt-dev/feeds.git --single-branch package/custom
   pushd package/custom && git submodule update --init --recursive && popd
   popd
 }
 
 function compile() {
-  pushd openwrt-$ARCH
+  pushd $SDK_DIR
 
   make defconfig
   make prereq
@@ -47,7 +48,7 @@ function compile() {
 
 function release() {
   mkdir release
-  cp -r openwrt-$ARCH/bin/packages/*/base release
+  cp -r $SDK_DIR/bin/packages/*/base release
 }
 
 prepare
