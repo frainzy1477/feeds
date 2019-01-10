@@ -4,7 +4,7 @@
 
 ```bash
 apt-get install gcc g++ make automake autoconf libtool git \
-    ccache file patch curl quilt gawk fakeroot gettext bzip2 \
+    ccache file patch curl quilt gawk fakeroot gettext bzip2 time \
     python2.7-minimal zlib1g-dev libncurses5-dev unzip xz-utils --no-install-recommends
 
 git clone https://github.com/openwrt-dev/feeds.git --single-branch

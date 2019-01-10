@@ -28,13 +28,14 @@ addons:
       - fakeroot
       - gettext
       - pkg-config
-      - python
+      - python2.7-minimal
       - zlib1g-dev
       - libssl-dev
       - libncurses5-dev
       - bzip2
       - xz-utils
       - unzip
+      - time
 
 env:
   matrix:
