@@ -1,19 +1,20 @@
 #!/bin/bash -e
 
-function prepare() {
-  SDK_DIR=openwrt-sdk-$ARCH
+CUR_DIR=$(pwd)
+SDK_DIR=openwrt-sdk-$TARGET
 
-  curl -kLs $SDK_URL | tar xfJ -
-  mv $(ls | sort | grep openwrt) $SDK_DIR
+function get_sources() {
+  curl -sSL $SDK_URL | tar xfJ -
+  mv $(ls -1 | grep $TARGET) $SDK_DIR
 
-  pushd $SDK_DIR
-  git clone https://github.com/openwrt-dev/feeds.git --single-branch package/custom
-  pushd package/custom && git submodule update --init --recursive && popd
-  popd
+  cd $SDK_DIR
+  git clone --single-branch -b master https://github.com/openwrt-dev/feeds.git package/custom && cd package/custom
+  git submodule update --init --recursive
+  cd $CUR_DIR
 }
 
-function compile() {
-  pushd $SDK_DIR
+function compile_packages() {
+  cd $SDK_DIR
 
   make defconfig
   make prereq
@@ -43,14 +44,14 @@ function compile() {
   ./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "OpenWRT feeds build key"
   make package/index V=s
 
-  popd
+  cd $CUR_DIR
 }
 
-function release() {
+function dist_release() {
   mkdir release
   cp -r $SDK_DIR/bin/packages/*/base release
 }
 
-prepare
-compile
-release
+get_sources
+compile_packages
+dist_release

@@ -6,10 +6,11 @@
 
 ```bash
 apt-get install gcc g++ make automake autoconf libtool git \
-    ccache file patch curl quilt gawk fakeroot gettext bzip2 time \
-    python2.7-minimal zlib1g-dev libncurses5-dev unzip xz-utils --no-install-recommends
+  ccache file patch curl quilt gawk time fakeroot gettext \
+  pkg-config python2.7-minimal libssl-dev libncurses5-dev \
+  zlib1g-dev bzip2 xz-utils unzip --no-install-recommends
 
-git clone https://github.com/openwrt-dev/feeds.git --single-branch
+git clone --single-branch -b master https://github.com/openwrt-dev/feeds.git
 cd feeds
 git submodule update --init --recursive
 git submodule update --remote --merge
@@ -48,4 +49,4 @@ src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/x86-64/base
 
 ### Reference
 
-> https://github.com/simonsmh/lede-dist
+- https://github.com/simonsmh/lede-dist

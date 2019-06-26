@@ -1,6 +1,5 @@
 dist: xenial
-language: c
-cache: ccache
+language: bash
 
 branches:
   only:
@@ -39,7 +38,7 @@ addons:
 
 env:
   matrix:
-    - SDK_URL=https://downloads.openwrt.org/releases/18.06.2/targets/ar71xx/generic/openwrt-sdk-ar71xx-generic_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+    - SDK_URL=https://downloads.openwrt.org/releases/18.06.2/targets/ar71xx/generic/openwrt-sdk-18.06.2-ar71xx-generic_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.2/targets/ar71xx/tiny/openwrt-sdk-18.06.2-ar71xx-tiny_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.2/targets/ramips/mt7620/openwrt-sdk-18.06.2-ramips-mt7620_gcc-7.3.0_musl.Linux-x86_64.tar.xz
     - SDK_URL=https://downloads.openwrt.org/releases/18.06.2/targets/x86/64/openwrt-sdk-18.06.2-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
@@ -48,14 +47,16 @@ env:
     - TZ: "Asia/Shanghai"
 
 install:
-  - git clone https://github.com/openwrt-dev/po2lmo.git
-  - pushd po2lmo
+  - git clone --single-branch -b master https://github.com/openwrt-dev/po2lmo.git
+  - cd po2lmo
   - make && sudo make install && make clean
-  - popd
+  - cd ..
   - rm -rf po2lmo
 
 before_script:
-  - export ARCH=$(basename $SDK_URL | sed -n 's/openwrt-sdk-[0-9.]*-\(\w*-\w*\).*_gcc.*/\1/p')
+  # export TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\?\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
+  # export TARGET=$(sed -n 's/.*[lede,openwrt]-sdk-[0-9.]*[\-rc\d-]*-\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
+  - export TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
 
 script:
   - bash compile.sh
@@ -63,7 +64,7 @@ script:
 deploy:
   provider: pages
   local-dir: release
-  target-branch: ${ARCH}
+  target-branch: ${TARGET}
   keep-history: true
   skip-cleanup: true
   github-token: ${GITHUB_TOKEN}
