@@ -27,6 +27,7 @@ function compile_packages() {
   make package/openwrt-dist-luci/compile V=w
   make package/openwrt-chinadns/compile V=w
   make package/openwrt-dns-forwarder/compile V=w
+  make package/openwrt-hev-socks5-server/compile V=w
 
   sed -i "s/CONFIG_PACKAGE_shadowsocks-libev-server=m/# CONFIG_PACKAGE_shadowsocks-libev-server is not set/g" .config
   make package/openwrt-shadowsocks/compile V=w \
