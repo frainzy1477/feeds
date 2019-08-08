@@ -26,6 +26,7 @@ function compile_packages() {
   make package/luci-app-shadowsocks/compile V=w
   make package/openwrt-dist-luci/compile V=w
   make package/openwrt-chinadns/compile V=w
+  make package/openwrt-cleandns/compile V=w
   make package/openwrt-dns-forwarder/compile V=w
   make package/openwrt-hev-socks5-server/compile V=w
 
