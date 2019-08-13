@@ -8,7 +8,7 @@ function get_sources() {
   mv $(ls -1 | grep $TARGET) $SDK_DIR
 
   cd $SDK_DIR
-  git clone --single-branch -b master --recurse-submodules -j4 https://github.com/openwrt-dev/feeds.git package/feeds
+  git clone --single-branch -b master --recurse-submodules -j4 https://github.com/openwrt-dev/feeds.git package/openwrt-dev
   cd $CUR_DIR
 }
 
