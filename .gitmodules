@@ -22,3 +22,6 @@
 [submodule "net/openwrt-cleandns"]
 	path = net/openwrt-cleandns
 	url = https://github.com/pexcn/openwrt-cleandns.git
+[submodule "net/openwrt-chinadns-ng"]
+	path = net/openwrt-chinadns-ng
+	url = https://github.com/pexcn/openwrt-chinadns-ng.git
