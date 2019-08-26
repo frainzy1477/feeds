@@ -3,7 +3,7 @@
 CUR_DIR=$(pwd)
 SDK_DIR=openwrt-sdk-$TARGET
 
-function get_sources() {
+get_sources() {
   curl -sSL $SDK_URL | tar xfJ -
   mv $(ls -1 | grep $TARGET) $SDK_DIR
 
@@ -12,25 +12,23 @@ function get_sources() {
   cd $CUR_DIR
 }
 
-function build_packages() {
+build_packages() {
   cd $SDK_DIR
 
   make defconfig
   make prereq
 
-  # prepare
   make package/libev/compile V=w
   make package/libcares/compile V=w
   make package/libsodium/compile V=w
   make package/mbedtls/compile V=w
   make package/pcre/compile V=w
 
-  # luci
   make package/luci-app-shadowsocks/compile V=w
   make package/openwrt-dist-luci/compile V=w
 
-  # core
   make package/openwrt-chinadns/compile V=w
+  make package/openwrt-chinadns-ng/compile V=w
   make package/openwrt-cleandns/compile V=w
   make package/openwrt-dns-forwarder/compile V=w
   make package/openwrt-hev-socks5-server/compile V=w
@@ -48,14 +46,13 @@ function build_packages() {
   make package/openwrt-simple-obfs/compile V=w \
     CONFIG_SIMPLE_OBFS_STATIC_LINK=y
 
-  # sign
   ./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "OpenWrt feeds build key"
   make package/index V=s
 
   cd $CUR_DIR
 }
 
-function dist_release() {
+dist_release() {
   mkdir release
   cp -r $SDK_DIR/bin/packages/*/base release
 }
