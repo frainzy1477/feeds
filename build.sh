@@ -33,7 +33,6 @@ build_packages() {
   make package/openwrt-dns-forwarder/compile V=w
   make package/openwrt-hev-socks5-server/compile V=w
 
-  sed -i "s/CONFIG_PACKAGE_shadowsocks-libev-server=m/# CONFIG_PACKAGE_shadowsocks-libev-server is not set/g" .config
   make package/openwrt-shadowsocks/compile V=w \
     CONFIG_SHADOWSOCKS_STATIC_LINK=y \
     CONFIG_SHADOWSOCKS_WITH_EV=y \
@@ -42,7 +41,6 @@ build_packages() {
     CONFIG_SHADOWSOCKS_WITH_SODIUM=y \
     CONFIG_SHADOWSOCKS_WITH_MBEDTLS=y
 
-  sed -i "s/CONFIG_PACKAGE_simple-obfs-server=m/# CONFIG_PACKAGE_simple-obfs-server is not set/g" .config
   make package/openwrt-simple-obfs/compile V=w \
     CONFIG_SIMPLE_OBFS_STATIC_LINK=y
 
