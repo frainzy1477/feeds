@@ -25,3 +25,6 @@
 [submodule "net/openwrt-chinadns-ng"]
 	path = net/openwrt-chinadns-ng
 	url = https://github.com/pexcn/openwrt-chinadns-ng.git
+[submodule "net/openwrt-udp2raw"]
+	path = net/openwrt-udp2raw
+	url = https://github.com/pexcn/openwrt-udp2raw.git
