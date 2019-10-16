@@ -1,10 +1,6 @@
 #!/bin/bash -e
 
 CUR_DIR=$(pwd)
-
-#TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\?\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
-#TARGET=$(sed -n 's/.*[lede,openwrt]-sdk-[0-9.]*[\-rc\d-]*-\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
-TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
 SDK_DIR=openwrt-sdk-$TARGET
 
 get_sources() {
