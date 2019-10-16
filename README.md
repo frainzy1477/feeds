@@ -1,4 +1,4 @@
-# Feeds
+# OpenWrt Feeds
 
 [![Build Status](https://travis-ci.org/openwrt-dev/feeds.svg?branch=master)](https://travis-ci.org/openwrt-dev/feeds)
 
@@ -10,19 +10,20 @@ apt-get install gcc g++ make automake autoconf libtool git \
   pkg-config python2.7-minimal libssl-dev libncurses5-dev \
   zlib1g-dev bzip2 xz-utils unzip --no-install-recommends
 
-git clone --single-branch -b master https://github.com/openwrt-dev/feeds.git
+git clone https://github.com/openwrt-dev/feeds.git -b master --single-branch
 cd feeds
 git submodule update --init --recursive
+
+# update upstreams
 git submodule update --remote --merge
 
 # ...
-# See compile.sh
+# See build.sh
 ```
 
 ### Usage
 
 Setup opkg configs following those lines:
-
 ```bash
 # ar71xx-generic
 src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/ar71xx-generic/base
@@ -50,4 +51,4 @@ src/gz openwrt_dev_base https://github.com/openwrt-dev/feeds/raw/x86-64/base
 
 ### Reference
 
-- https://github.com/simonsmh/lede-dist
+https://github.com/simonsmh/lede-dist
