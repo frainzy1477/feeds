@@ -28,3 +28,6 @@
 [submodule "net/openwrt-udp2raw"]
 	path = net/openwrt-udp2raw
 	url = https://github.com/pexcn/openwrt-udp2raw.git
+[submodule "net/openwrt-dns2tcp"]
+	path = net/openwrt-dns2tcp
+	url = https://github.com/pexcn/openwrt-dns2tcp.git
