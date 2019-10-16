@@ -33,6 +33,7 @@ build_packages() {
   make package/openwrt-cleandns/compile V=w
   make package/openwrt-dns-forwarder/compile V=w
   make package/openwrt-dns2tcp/compile V=w
+  make package/openwrt-ipt2socks/compile V=w
   make package/openwrt-hev-socks5-server/compile V=w
   make package/openwrt-udp2raw/compile V=w
 
