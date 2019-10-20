@@ -9,6 +9,7 @@ get_sources() {
 
   cd $SDK_DIR
   git clone https://github.com/openwrt-dev/feeds.git package/openwrt-dev -b master --single-branch --recurse-submodules -j4
+  cp ../key-build .
   cd $CUR_DIR
 }
 
@@ -48,7 +49,6 @@ build_packages() {
   make package/openwrt-simple-obfs/compile V=w \
     CONFIG_SIMPLE_OBFS_STATIC_LINK=y
 
-  ./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "openwrt-dev feeds build key"
   make package/index V=s
 
   cd $CUR_DIR
