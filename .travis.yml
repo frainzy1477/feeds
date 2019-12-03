@@ -54,9 +54,7 @@ install:
   - rm -rf po2lmo
 
 before_script:
-  #export TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\?\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
-  #export TARGET=$(sed -n 's/.*[lede,openwrt]-sdk-[0-9.]*[\-rc\d-]*-\(\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
-  - export TARGET=$(sed -n 's/.*openwrt-sdk-[0-9.]*-\(\w*-\w*\).*_gcc.*/\1/p' <<< $SDK_URL)
+  - export TARGET=$(cut -d '/' -f 7-8 <<< $SDK_URL | tr '/' '-')
 
 script:
   - ./build.sh
