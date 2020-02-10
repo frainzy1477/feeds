@@ -1,0 +1,49 @@
+name: OpenWrt Feeds
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build-packages:
+    name: Build Packages
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        SDK_URL:
+          - https://downloads.openwrt.org/releases/19.07.1/targets/ath79/generic/openwrt-sdk-19.07.1-ath79-generic_gcc-7.5.0_musl.Linux-x86_64.tar.xz
+          - https://downloads.openwrt.org/releases/19.07.1/targets/ath79/tiny/openwrt-sdk-19.07.1-ath79-tiny_gcc-7.5.0_musl.Linux-x86_64.tar.xz
+          - https://downloads.openwrt.org/releases/19.07.1/targets/ramips/mt7620/openwrt-sdk-19.07.1-ramips-mt7620_gcc-7.5.0_musl.Linux-x86_64.tar.xz
+          - https://downloads.openwrt.org/releases/18.06.7/targets/x86/64/openwrt-sdk-18.06.7-x86-64_gcc-7.3.0_musl.Linux-x86_64.tar.xz
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Prepare
+        run: |
+          # depends
+          sudo apt-get install --no-install-recommends -y \
+            gcc g++ make automake autoconf libtool git ccache file patch curl quilt gawk time \
+            fakeroot gettext pkg-config python2.7-minimal libssl-dev libncurses5-dev zlib1g-dev \
+            bzip2 xz-utils unzip
+          # po2lmo
+          git clone https://github.com/openwrt-dev/po2lmo.git --single-branch -b master
+          pushd po2lmo; make && sudo make install; popd
+          rm -rf po2lmo
+      - name: Build
+        env:
+          TZ: Asia/Taipei
+          SDK_URL: ${{ matrix.SDK_URL }}
+        run: |
+          ./build.sh
+          echo ::set-env name=TARGET::$(cut -d '/' -f 7-8 <<< $SDK_URL | tr '/' '-')
+      - name: Deploy
+        env:
+          TZ: Asia/Taipei
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: $TARGET
+          FOLDER: $TARGET
