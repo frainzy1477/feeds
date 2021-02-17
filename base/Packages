@@ -4,22 +4,22 @@ Depends: libc
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 36207
+Installed-Size: 36170
 Filename: ChinaDNS_1.3.3-1_x86_64.ipk
-Size: 35800
-SHA256sum: fd9260015de6116d3f769165b11ae3ff69bb0921f9ce42fe73d68012ddf4a779
+Size: 35794
+SHA256sum: 477e99e9e39425cd3a2af1099d8285ff61eff847a6d0a7f0b8aaf452b072b904
 Description:  Protect yourself against DNS poisoning in China.
 
 Package: chinadns-ng
-Version: 1.0-beta.22-4
+Version: 1.0-beta.24-1
 Depends: libc, ipset
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 395577
-Filename: chinadns-ng_1.0-beta.22-4_x86_64.ipk
-Size: 396530
-SHA256sum: 7eead7d02a78e3f7a2aeed9e48c61f4675155579f8b6cef301508b769339467f
+Installed-Size: 395892
+Filename: chinadns-ng_1.0-beta.24-1_x86_64.ipk
+Size: 396828
+SHA256sum: 361c0ce03029e789ad4e6dcbb04c80513f7a776c2d6a9df6ec2c167c942021fa
 Description:  ChinaDNS Next Generation, refactoring with epoll and ipset.
 
 Package: dns-forwarder
@@ -28,10 +28,10 @@ Depends: libc
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 10522
+Installed-Size: 10598
 Filename: dns-forwarder_1.2.1-2_x86_64.ipk
-Size: 11311
-SHA256sum: 27d5f07c54489af26bbe0df683cd6031771139baabdc88ae912bbcbe685f6339
+Size: 11349
+SHA256sum: ca803fd71270e3acd26a15f58bb74097169e3314bf99885323a6787fa50322e3
 Description:  Forwarding DNS queries on TCP transport.
 
 Package: dns2socks
@@ -40,10 +40,10 @@ Depends: libc, libpthread
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 12961
+Installed-Size: 12986
 Filename: dns2socks_2.1-1_x86_64.ipk
-Size: 13717
-SHA256sum: eac5799e58418309a63f554fe9e2cbee11a734c7c62570d00519f787382cdf68
+Size: 13731
+SHA256sum: a6addee5510986fc0c5c54131540e72cc12727cdf54e283a4e840861aaf8a442
 Description:  This is a command line utility to resolve DNS requests via a SOCKS tunnel like Tor or a HTTP proxy.
 
 Package: dns2tcp
@@ -52,46 +52,46 @@ Depends: libc
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 18344
+Installed-Size: 18391
 Filename: dns2tcp_1.1.0-3_x86_64.ipk
-Size: 19135
-SHA256sum: 504e71ad0a41f4f5b7d75577fe705436d021ef728387209d300e57dd6fd08a15
+Size: 19146
+SHA256sum: 07c41b5aad2159055b2ae57f710645cd5e796c7d6f87dc6f9a5cb7355bba09a3
 Description:  Utility to convert DNS query from UDP to TCP.
 
 Package: hev-socks5-server
-Version: 1.9.4-2
+Version: 1.9.7-1
 Depends: libc
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 72410
-Filename: hev-socks5-server_1.9.4-2_x86_64.ipk
-Size: 73281
-SHA256sum: b893b709c63718bd890420960d8738216eb6e5bb7d09738e1b693b376dddb6e9
+Installed-Size: 75343
+Filename: hev-socks5-server_1.9.7-1_x86_64.ipk
+Size: 76179
+SHA256sum: 3f4d53f8b36b0e292d09a7f9f78b6e6513cd643b266a7318b3bb75a1c1c563d5
 Description:  A simple, lightweight socks5 server for Unix.
 
 Package: ipt2socks
-Version: 1.1.2-1
+Version: 1.1.3-1
 Depends: libc
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 39025
-Filename: ipt2socks_1.1.2-1_x86_64.ipk
-Size: 39862
-SHA256sum: a86a800e0b99f4839f4b2cf9a48c6def2b168cd466599bf9789941a0121ce85d
+Installed-Size: 39594
+Filename: ipt2socks_1.1.3-1_x86_64.ipk
+Size: 40420
+SHA256sum: b43452b8d9fa864a4ee245fadecbdf7ef64243b779fc5227eee3cf2dfb273e12
 Description:  Utility for converting iptables (REDIRECT/TPROXY) to SOCKS5.
 
 Package: libcares
-Version: 1.15.0-4
+Version: 1.17.1-1
 Depends: libc
 License: MIT
 Section: libs
 Architecture: x86_64
-Installed-Size: 31174
-Filename: libcares_1.15.0-4_x86_64.ipk
-Size: 31970
-SHA256sum: 655a7314f71a9f3331a4f5bdb716b9f3f3827e7e9636387a2509ae1d5451ba2e
+Installed-Size: 35499
+Filename: libcares_1.17.1-1_x86_64.ipk
+Size: 36369
+SHA256sum: abc1c377f2290d408a40fa86ecee7875807f200b0cfd96971cc3de6b0ef2d5eb
 Description:  c-ares is a C library for asynchronous DNS requests (including name resolves)
  
  C89 compatibility, MIT licensed, builds for and runs on POSIX, Windows,
@@ -99,54 +99,55 @@ Description:  c-ares is a C library for asynchronous DNS requests (including nam
  
 
 Package: libev
-Version: 4.27-1
+Version: 4.31-1
 Depends: libc
 License: BSD-2-Clause
 Section: libs
 Architecture: x86_64
-Installed-Size: 22018
-Filename: libev_4.27-1_x86_64.ipk
-Size: 22746
-SHA256sum: 1602a2f921d1ddfee4a508750b02d0058f402a855d3a5e0ffb6d8058d40e5c87
+Installed-Size: 24886
+Filename: libev_4.31-1_x86_64.ipk
+Size: 25571
+SHA256sum: 8bf8aa06415c031a5be5c27011243ba244c3274f86f072f9caeec88d0c43f2a2
 Description:  A full-featured and high-performance event loop that is loosely modelled after
  libevent, but without its limitations and bugs.
 
-Package: libmbedtls
-Version: 2.16.2-2
+Package: libmbedtls12
+Version: 2.16.9-1
 Depends: libc
-License: GPL-2.0+
+Provides: libmbedtls
+License: GPL-2.0-or-later
 Section: libs
 Architecture: x86_64
-Installed-Size: 185326
-Filename: libmbedtls_2.16.2-2_x86_64.ipk
-Size: 186053
-SHA256sum: 30a3d72dd67b4206486e85f2ebb6005a818339780c67ace56de03294540a70be
+Installed-Size: 191858
+Filename: libmbedtls12_2.16.9-1_x86_64.ipk
+Size: 192629
+SHA256sum: d6947c687ac02853040d262bb09608c5d7b2b390b951356e96eb46312799795a
 Description:  The aim of the mbedtls project is to provide a quality, open-source
  cryptographic library written in C and targeted at embedded systems.
  This package contains the mbedtls library.
 
 Package: libpcre
-Version: 8.43-1
+Version: 8.44-3
 Depends: libc
 License: BSD-3-Clause
 Section: libs
 Architecture: x86_64
-Installed-Size: 81175
-Filename: libpcre_8.43-1_x86_64.ipk
-Size: 81974
-SHA256sum: 909d3ba39fe080290033bf6c4a12836bfd1a4a1c46ed76e547f23b64a6ac4de3
+Installed-Size: 140983
+Filename: libpcre_8.44-3_x86_64.ipk
+Size: 141828
+SHA256sum: 756928d11eb2b562a64ef4ab9a721dcd09de5193415f19befff0502321141527
 Description:  A Perl Compatible Regular Expression library
 
 Package: libsodium
-Version: 1.0.18-1
-Depends: libc, libpthread
+Version: 1.0.18-3
+Depends: libc
 License: ISC
 Section: libs
 Architecture: x86_64
-Installed-Size: 141386
-Filename: libsodium_1.0.18-1_x86_64.ipk
-Size: 142549
-SHA256sum: 493fd7efd6b465f4eb4af565fb03fe849932787364ff2e63ed7a80ee10c85b53
+Installed-Size: 144329
+Filename: libsodium_1.0.18-3_x86_64.ipk
+Size: 145540
+SHA256sum: 95e10f26c26c4018da6ed6c1cad6d4755fd66c21ddcda933b5d56e454fd4aaac
 Description:  NaCl (pronounced "salt") is a new easy-to-use high-speed software library for network communication, encryption, decryption, signatures, etc.
  NaCl's goal is to provide all of the core operations needed to build higher-level cryptographic tools.
  Sodium is a portable, cross-compilable, installable, packageable fork of NaCl (based on the latest released upstream version nacl-20110221), with a compatible API.
@@ -160,10 +161,10 @@ Depends: libc, ChinaDNS
 License: GPLv3
 Section: luci
 Architecture: all
-Installed-Size: 1643
+Installed-Size: 1833
 Filename: luci-app-chinadns_1.6.2-1_all.ipk
-Size: 2522
-SHA256sum: 5bea99fa0e595aa7f5d215e6f83f349c91bc70f33a88e8145c8d6e18ef1e5a83
+Size: 2728
+SHA256sum: dd8455e414a2e3227a484a8e940a90dde71046204578718bf8fa114eeffa21bb
 Description:  LuCI Support for ChinaDNS.
 
 Package: luci-app-dns-forwarder
@@ -172,10 +173,10 @@ Depends: libc, dns-forwarder
 License: GPLv3
 Section: luci
 Architecture: all
-Installed-Size: 1348
+Installed-Size: 1499
 Filename: luci-app-dns-forwarder_1.6.2-1_all.ipk
-Size: 2246
-SHA256sum: ccf94d6e360a6e34b0cd03bd9ebaf809b74bf7571fb2ed0e635ebbd6d25128c9
+Size: 2399
+SHA256sum: da09073f98b401edc00cafd039d7c4d09e97fe7c087760b029d57ec38ee9f120
 Description:  LuCI Support for Dns-Forwarder.
 
 Package: luci-app-shadowsocks-without-ipset
@@ -184,10 +185,10 @@ Depends: libc, iptables
 License: GPLv3
 Section: luci
 Architecture: all
-Installed-Size: 10297
+Installed-Size: 10299
 Filename: luci-app-shadowsocks-without-ipset_1.9.1-1_all.ipk
-Size: 11235
-SHA256sum: 715c41ff54280a9e6e460572d53ff74cc820587911857c5f62367fc7e6c9dc15
+Size: 11234
+SHA256sum: 22175db7c8e21fdaa22e80ce853d5ec332ee5020ca165e8a561a477ec550e6d6
 Description:  LuCI Support for shadowsocks-libev.
 
 Package: luci-app-shadowsocks
@@ -196,22 +197,22 @@ Depends: libc, iptables, ipset
 License: GPLv3
 Section: luci
 Architecture: all
-Installed-Size: 10418
+Installed-Size: 10423
 Filename: luci-app-shadowsocks_1.9.1-1_all.ipk
-Size: 11341
-SHA256sum: 72470ae45c145ceb5b1b528a25cc0f2750e2c8cc27c6b668329fc29ae5fcc587
+Size: 11347
+SHA256sum: 4e7243d8b00bbee58f558e6309dbfc7928e6e3fd9449ba6cdf5f8c56f31bfdb9
 Description:  LuCI Support for shadowsocks-libev.
 
 Package: mbedtls-util
-Version: 2.16.2-2
-Depends: libc, libmbedtls
-License: GPL-2.0+
+Version: 2.16.9-1
+Depends: libc, libmbedtls12
+License: GPL-2.0-or-later
 Section: utils
 Architecture: x86_64
-Installed-Size: 6839
-Filename: mbedtls-util_2.16.2-2_x86_64.ipk
-Size: 7678
-SHA256sum: a3cd0baee5a70cbea30c43b6cbbb367ba0159c5f06d58dcbe8e49cc148bbb5ba
+Installed-Size: 6990
+Filename: mbedtls-util_2.16.9-1_x86_64.ipk
+Size: 7811
+SHA256sum: 971925c1adf545636394555b770a44596b82286dadcc258d4654714b8be102a8
 Description:  The aim of the mbedtls project is to provide a quality, open-source
  cryptographic library written in C and targeted at embedded systems.
  This package contains mbedtls helper programs for private key and
@@ -223,58 +224,58 @@ Depends: libc
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 8946
+Installed-Size: 9061
 Filename: portfwd_20191118-1_x86_64.ipk
-Size: 9620
-SHA256sum: b41ef303441d006b013062094bf9e676738d86e0ba432578d8362317ca23b843
+Size: 9773
+SHA256sum: 3ec479ce965c052c16f94430a280c2b8d83cb7e1ec0e5db955a7a40626f084e5
 Description:  User-space TCP/UDP port forwarding services.
 
 Package: shadowsocks-libev-server
-Version: 3.3.4-1
-Depends: libc, libpthread
+Version: 3.3.5-1
+Depends: libc, libpthread, libev, libpcre, libcares, libsodium, libmbedtls12
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 351321
-Filename: shadowsocks-libev-server_3.3.4-1_x86_64.ipk
-Size: 352130
-SHA256sum: f2cb68c40246d170bb47dcf8480bbfc80e88ee5b5cc4cd25c83d9e5a1d9c236e
+Installed-Size: 67754
+Filename: shadowsocks-libev-server_3.3.5-1_x86_64.ipk
+Size: 68668
+SHA256sum: c27d88a5dae82c6a41ce3ddecefbd72217d26b5b06c5c95b7ddbae51fb19e712
 Description:  Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
 
 Package: shadowsocks-libev
-Version: 3.3.4-1
-Depends: libc, libpthread
+Version: 3.3.5-1
+Depends: libc, libpthread, libev, libpcre, libcares, libsodium, libmbedtls12
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 835363
-Filename: shadowsocks-libev_3.3.4-1_x86_64.ipk
-Size: 836056
-SHA256sum: 90a913f1d7f73293e783ada40749ec6a8bf7d1fa190bd6a46d0cc6d8ee5ddd25
+Installed-Size: 178401
+Filename: shadowsocks-libev_3.3.5-1_x86_64.ipk
+Size: 179250
+SHA256sum: 8a2894ae3dd37155306135e474b19dfec48e928d75d3d6d47b1506e27e5b8791
 Description:  Shadowsocks-libev is a lightweight secured socks5 proxy for embedded devices and low end boxes.
 
 Package: simple-obfs-server
 Version: 0.0.5-5
-Depends: libc, libpthread
+Depends: libc, libpthread, libev
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 86327
+Installed-Size: 32367
 Filename: simple-obfs-server_0.0.5-5_x86_64.ipk
-Size: 87107
-SHA256sum: c95e4f9cf3a5d8ec5ee107eca3dda09688c0b66bcbc74eee02c11bf4510a23df
+Size: 33178
+SHA256sum: 0ad33ff7cb6f0977630c6082b5beb294b880bff39b8a27261805ce2f17beb61c
 Description:  Simple-obfs is a simple obfusacting tool, designed as plugin server of shadowsocks.
 
 Package: simple-obfs
 Version: 0.0.5-5
-Depends: libc, libpthread
+Depends: libc, libpthread, libev
 License: GPLv3
 Section: net
 Architecture: x86_64
-Installed-Size: 83837
+Installed-Size: 30133
 Filename: simple-obfs_0.0.5-5_x86_64.ipk
-Size: 84682
-SHA256sum: e0aab479834db2d3684015f9c4b6101e0b88fde96a851fc0e132902e2a26233b
+Size: 30872
+SHA256sum: ac2be1ca33e844f3404da6c64d79c447284410875022fb69a4b015ca0d716880
 Description:  Simple-obfs is a simple obfusacting tool, designed as plugin server of shadowsocks.
 
 Package: udp2raw
@@ -282,10 +283,10 @@ Version: 20190716-5
 Depends: libc
 Section: net
 Architecture: x86_64
-Installed-Size: 396030
+Installed-Size: 408589
 Filename: udp2raw_20190716-5_x86_64.ipk
-Size: 396258
-SHA256sum: f5f49c3cdd0835b6a36c847dff6950c92e0535a79cd059f17a89d80b5e00f79a
+Size: 409016
+SHA256sum: 1d3c6c567428de4c8a39e399d831eac20770f960ea2794447f6bc70ba029c7b3
 Description:  A tunnel which turns UDP traffic into encrypted UDP/FakeTCP/ICMP traffic by using raw socket,
  helps you bypass UDP firewalls or unstable UDP Environment.
 
@@ -294,22 +295,22 @@ Version: 20190408-2
 Depends: libc
 Section: net
 Architecture: x86_64
-Installed-Size: 168207
+Installed-Size: 172422
 Filename: udpspeeder_20190408-2_x86_64.ipk
-Size: 169087
-SHA256sum: d396425ca4c9e1566ed49a360254e1815859df4783ff7b7ad3b65d6608c4f831
+Size: 173316
+SHA256sum: 13e290a3e1a91cf195e5ab4e4f4418f724b2769ceaa28ecb02413544aa966366
 Description:  A tunnel which improves your network quality on a high-latency lossy link
  by using forward error correction, for all traffics (TCP/UDP/ICMP).
 
 Package: vlmcsd
-Version: svn1113-1
+Version: svn1113-2
 Depends: libc, libpthread
 License: GPL-3.0
 Section: net
 Architecture: x86_64
-Installed-Size: 41792
-Filename: vlmcsd_svn1113-1_x86_64.ipk
-Size: 42749
-SHA256sum: 8b52b863695fe8ca9cb1fd1d0e7bacbd30dc50cfbfea94fa5a62cadadfeab145
+Installed-Size: 42432
+Filename: vlmcsd_svn1113-2_x86_64.ipk
+Size: 43380
+SHA256sum: 90f7c6c078e7c9d7af8bc276af8b6db3bada52f9039c319aab3fbdb64e650964
 Description:  KMS Emulator in C (currently runs on Linux including Android, FreeBSD, Solaris, Minix, Mac OS, iOS, Windows with or without Cygwin).
 
