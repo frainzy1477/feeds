@@ -94,6 +94,22 @@ Size: 40423
 SHA256sum: de60cdd1ebbe3e37bb4e100cb1fa135ffb2db5319c862219116cb1a057092ce8
 Description:  Utility for converting iptables (REDIRECT/TPROXY) to SOCKS5.
 
+Package: iptables-mod-fullconenat
+Version: 2019-10-21-0cf3b48f-1
+Depends: libc, iptables, kmod-ipt-fullconenat
+Source: package/openwrt-fullconenat
+SourceName: iptables-mod-fullconenat
+License: GPL-2.0
+LicenseFiles: LICENSE
+Section: net
+Maintainer: Chion Tang <tech@chionlab.moe>
+Architecture: x86_64
+Installed-Size: 2399
+Filename: iptables-mod-fullconenat_2019-10-21-0cf3b48f-1_x86_64.ipk
+Size: 3139
+SHA256sum: a12796de92e6e8455d76f298ecfbf6d5653f6c0910f74d2b97db41ad2b2d9fd8
+Description:  FULLCONENAT iptables extension
+
 Package: libcares
 Version: 1.17.1-1
 Depends: libc
@@ -217,22 +233,6 @@ Size: 2395
 SHA256sum: 55ef22de06c79d9128fd7dd773b7f92ba6371b1913277877081e2609f47b5ad1
 Description:  LuCI Support for Dns-Forwarder.
 
-Package: luci-app-shadowsocks-without-ipset
-Version: 1.9.1-1
-Depends: libc, iptables
-Source: package/luci-app-shadowsocks
-SourceName: luci-app-shadowsocks-without-ipset
-License: GPLv3
-LicenseFiles: LICENSE
-Section: luci
-Maintainer: Jian Chang <aa65535@live.com>
-Architecture: all
-Installed-Size: 10297
-Filename: luci-app-shadowsocks-without-ipset_1.9.1-1_all.ipk
-Size: 11229
-SHA256sum: 2e4bf2d6d953c3fd2eed8e56242efc4e7be5b3fd0b08e8a7583475bd63edd044
-Description:  LuCI Support for shadowsocks-libev.
-
 Package: luci-app-shadowsocks
 Version: 1.9.1-1
 Depends: libc, iptables, ipset
@@ -248,24 +248,6 @@ Filename: luci-app-shadowsocks_1.9.1-1_all.ipk
 Size: 11342
 SHA256sum: 269421cbf0e9f838a99ccd8e1fc4f7fe8e8b249a35a5babf0a164e2924b949cc
 Description:  LuCI Support for shadowsocks-libev.
-
-Package: mbedtls-util
-Version: 2.16.9-1
-Depends: libc, libmbedtls12
-Source: package/mbedtls
-SourceName: mbedtls-util
-License: GPL-2.0-or-later
-LicenseFiles: gpl-2.0.txt
-Section: utils
-Architecture: x86_64
-Installed-Size: 6989
-Filename: mbedtls-util_2.16.9-1_x86_64.ipk
-Size: 7808
-SHA256sum: 9c73d215833d9fb573e210d0a35174bda1fcf47522264b1aee6a2830cc7ef929
-Description:  The aim of the mbedtls project is to provide a quality, open-source
- cryptographic library written in C and targeted at embedded systems.
- This package contains mbedtls helper programs for private key and
- CSR generation (gen_key, cert_req)
 
 Package: portfwd
 Version: 20191118-1
@@ -387,7 +369,7 @@ Maintainer: pexcn <i@pexcn.me>
 Architecture: x86_64
 Installed-Size: 42424
 Filename: vlmcsd_svn1113-2_x86_64.ipk
-Size: 43377
-SHA256sum: d28e416c316c18e52f871fc55f3a962b7459743788fc79ffa9c8420409b2f8c9
+Size: 43384
+SHA256sum: 96d65dd39b8b41c043edb905074ee89a91592336031bb4c67a2a8e653ed87088
 Description:  KMS Emulator in C (currently runs on Linux including Android, FreeBSD, Solaris, Minix, Mac OS, iOS, Windows with or without Cygwin).
 
