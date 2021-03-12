@@ -52,7 +52,7 @@ get_sources() {
 
   # fullconenat patch for firewall
   ./scripts/feeds install firewall
-  cp -r $CUR_DIR/patch/firewall/patches package/network/config/firewall/
+  cp -r $CUR_DIR/patch/firewall/patches package/feeds/base/firewall/
 
   # fullconenat patch for luci-app-firewall
   ./scripts/feeds install luci-app-firewall
