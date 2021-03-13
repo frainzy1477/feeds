@@ -7,20 +7,19 @@ SDK_DIR=$(pwd)/openwrt-sdk
 
 _update_feeds() {
   if [ ! -f $SDK_DIR/.feeds_updated ]; then
-    ./scripts/feeds update base luci
+    ./scripts/feeds update base packages luci
     touch $SDK_DIR/.feeds_updated
   fi
 }
 
 _install_feeds() {
-  local package_name=$1
   _update_feeds
-  ./scripts/feeds install $package_name
+  ./scripts/feeds install "$@"
 }
 
 _install_feeds_with_patches() {
-  local target_dir=$1
-  local package_name=$(basename $1)
+  local target_dir="$1"
+  local package_name=$(basename "$1")
   _update_feeds
   ./scripts/feeds install $package_name
   cp -rv $CUR_DIR/patch/$package_name/patches $target_dir
@@ -38,8 +37,9 @@ get_sources() {
   _install_feeds_with_patches package/feeds/base/firewall/
   _install_feeds_with_patches package/feeds/luci/luci-app-firewall/
 
-  # shadowsocks-libev depends
+  # install package depends
   _install_feeds_with_patches package/feeds/base/mbedtls/
+  _install_feeds c-ares libev libsodium pcre
 
   # copy sources
   cp -rv $CUR_DIR/libs/* package/
@@ -55,9 +55,9 @@ update_config() {
   make defconfig
 
   # fix pcre compile
-  sed -i 's/CONFIG_PACKAGE_libpcre16=m/# CONFIG_PACKAGE_libpcre16 is not set/' .config
-  sed -i 's/CONFIG_PACKAGE_libpcre32=m/# CONFIG_PACKAGE_libpcre32 is not set/' .config
-  sed -i 's/CONFIG_PACKAGE_libpcrecpp=m/# CONFIG_PACKAGE_libpcrecpp is not set/' .config
+  #sed -i 's/CONFIG_PACKAGE_libpcre16=m/# CONFIG_PACKAGE_libpcre16 is not set/' .config
+  #sed -i 's/CONFIG_PACKAGE_libpcre32=m/# CONFIG_PACKAGE_libpcre32 is not set/' .config
+  #sed -i 's/CONFIG_PACKAGE_libpcrecpp=m/# CONFIG_PACKAGE_libpcrecpp is not set/' .config
 
   cd $CUR_DIR
 }
@@ -65,11 +65,11 @@ update_config() {
 build_packages() {
   cd $SDK_DIR
 
-  make -j$(nproc) package/c-ares/compile V=w
-  make -j$(nproc) package/libev/compile V=w
-  make -j$(nproc) package/libsodium/compile V=w
-  make -j$(nproc) package/mbedtls/compile V=w
-  make -j$(nproc) package/pcre/compile V=w
+  #make -j$(nproc) package/c-ares/compile V=w
+  #make -j$(nproc) package/libev/compile V=w
+  #make -j$(nproc) package/libsodium/compile V=w
+  #make -j$(nproc) package/mbedtls/compile V=w
+  #make -j$(nproc) package/pcre/compile V=w
 
   make -j$(nproc) package/luci-app-shadowsocks/compile V=w
   make -j$(nproc) package/openwrt-dist-luci/compile V=w
