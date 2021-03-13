@@ -5,38 +5,25 @@ set -o pipefail
 CUR_DIR=$(pwd)
 SDK_DIR=$(pwd)/openwrt-sdk
 
-_reserve_ipk_list() {
-  cat <<- EOF
-	libcares
-	libev
-	libmbedtls12
-	libpcre
-	libsodium
+_update_feeds() {
+  if [ ! -f $SDK_DIR/.feeds_updated ]; then
+    ./scripts/feeds update base luci
+    touch $SDK_DIR/.feeds_updated
+  fi
+}
 
-	ChinaDNS
-	chinadns-ng
-	dns-forwarder
-	dns2tcp
-	hev-socks5-server
-	ipt2socks
-	portfwd
-	shadowsocks-libev-server
-	shadowsocks-libev
-	simple-obfs-server
-	simple-obfs
-	udp2raw
-	udpspeeder
-	vlmcsd
-	luci-app-dns-forwarder
-	luci-app-shadowsocks
+_install_feeds() {
+  local package_name=$1
+  _update_feeds
+  ./scripts/feeds install $package_name
+}
 
-	kmod-ipt-fullconenat
-	iptables-mod-fullconenat
-	firewall
-	luci-app-firewall
-	luci-i18n-firewall-zh-cn
-	luci-i18n-firewall-zh-tw
-EOF
+_install_feeds_with_patches() {
+  local target_dir=$1
+  local package_name=$(basename $1)
+  _update_feeds
+  ./scripts/feeds install $package_name
+  cp -rv $CUR_DIR/patch/$package_name/patches $target_dir
 }
 
 download_sdk() {
@@ -47,20 +34,16 @@ download_sdk() {
 get_sources() {
   cd $SDK_DIR
 
-  # update feeds
-  ./scripts/feeds update base luci
+  # fullconenat
+  _install_feeds_with_patches package/feeds/base/firewall/
+  _install_feeds_with_patches package/feeds/luci/luci-app-firewall/
 
-  # fullconenat patch for firewall
-  ./scripts/feeds install firewall
-  cp -r $CUR_DIR/patch/firewall/patches package/feeds/base/firewall/
+  # shadowsocks-libev depends
+  _install_feeds_with_patches package/feeds/base/mbedtls/
 
-  # fullconenat patch for luci-app-firewall
-  ./scripts/feeds install luci-app-firewall
-  cp -r $CUR_DIR/patch/luci-app-firewall/patches package/feeds/luci/luci-app-firewall/
-
-  # copy local sources
-  cp -r $CUR_DIR/libs/* package/
-  cp -r $CUR_DIR/net/* package/
+  # copy sources
+  cp -rv $CUR_DIR/libs/* package/
+  cp -rv $CUR_DIR/net/* package/
   cp $CUR_DIR/key-build .
 
   cd $CUR_DIR
@@ -112,9 +95,7 @@ build_packages() {
 }
 
 remove_useless() {
-  cd $SDK_DIR
-  find bin/ -type f $(printf " ! -name %s*" $(_reserve_ipk_list)) | xargs rm -f
-  cd $CUR_DIR
+  find $SDK_DIR/bin/ -type f $(printf " ! -name %s_*" $(cat packages.txt)) | xargs rm -f
 }
 
 create_index() {
@@ -124,9 +105,9 @@ create_index() {
 }
 
 copy_packages() {
-  cp -r $SDK_DIR/bin/packages/*/base $IPK_ARCH-base
-  cp -r $SDK_DIR/bin/packages/*/luci $IPK_ARCH-luci
-  cp -r $SDK_DIR/bin/targets/${IPK_ARCH%%-*}/${IPK_ARCH##*-}/packages $IPK_ARCH-core
+  cp -rv $SDK_DIR/bin/packages/*/base $IPK_ARCH-base
+  cp -rv $SDK_DIR/bin/packages/*/luci $IPK_ARCH-luci
+  cp -rv $SDK_DIR/bin/targets/${IPK_ARCH%%-*}/${IPK_ARCH##*-}/packages $IPK_ARCH-core
 }
 
 download_sdk
