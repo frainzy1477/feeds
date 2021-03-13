@@ -58,6 +58,7 @@ build_packages() {
 
 copy_packages() {
   cp -rv $SDK_DIR/bin/packages/*/base $IPK_ARCH-base
+  cp -rv $SDK_DIR/bin/packages/*/packages $IPK_ARCH-packages
   cp -rv $SDK_DIR/bin/packages/*/luci $IPK_ARCH-luci
   cp -rv $SDK_DIR/bin/targets/${IPK_ARCH%%-*}/${IPK_ARCH##*-}/packages $IPK_ARCH-core
 }
