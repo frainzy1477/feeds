@@ -42,22 +42,8 @@ get_sources() {
   _install_feeds c-ares libev libsodium pcre
 
   # copy sources
-  cp -rv $CUR_DIR/libs/* package/
   cp -rv $CUR_DIR/net/* package/
   cp $CUR_DIR/key-build .
-
-  cd $CUR_DIR
-}
-
-update_config() {
-  cd $SDK_DIR
-
-  make defconfig
-
-  # fix pcre compile
-  #sed -i 's/CONFIG_PACKAGE_libpcre16=m/# CONFIG_PACKAGE_libpcre16 is not set/' .config
-  #sed -i 's/CONFIG_PACKAGE_libpcre32=m/# CONFIG_PACKAGE_libpcre32 is not set/' .config
-  #sed -i 's/CONFIG_PACKAGE_libpcrecpp=m/# CONFIG_PACKAGE_libpcrecpp is not set/' .config
 
   cd $CUR_DIR
 }
@@ -65,14 +51,7 @@ update_config() {
 build_packages() {
   cd $SDK_DIR
 
-  #make -j$(nproc) package/c-ares/compile V=w
-  #make -j$(nproc) package/libev/compile V=w
-  #make -j$(nproc) package/libsodium/compile V=w
-  #make -j$(nproc) package/mbedtls/compile V=w
-  #make -j$(nproc) package/pcre/compile V=w
-
-  make -j$(nproc) package/luci-app-shadowsocks/compile V=w
-  make -j$(nproc) package/openwrt-dist-luci/compile V=w
+  make defconfig
 
   make -j$(nproc) package/openwrt-chinadns/compile V=w
   make -j$(nproc) package/openwrt-chinadns-ng/compile V=w
@@ -86,21 +65,17 @@ build_packages() {
   make -j$(nproc) package/openwrt-udp2raw/compile V=w
   make -j$(nproc) package/openwrt-udpspeeder/compile V=w
   make -j$(nproc) package/openwrt-vlmcsd/compile V=w
+  make -j$(nproc) package/luci-app-shadowsocks/compile V=w
+  make -j$(nproc) package/openwrt-dist-luci/compile V=w
 
   make -j$(nproc) package/openwrt-fullconenat/compile V=w
   make -j$(nproc) package/firewall/compile V=w
   make -j$(nproc) package/luci-app-firewall/compile V=w
 
-  cd $CUR_DIR
-}
-
-remove_useless() {
-  find $SDK_DIR/bin/ -type f $(printf " ! -name %s_*" $(cat packages.txt)) | xargs rm -f
-}
-
-create_index() {
-  cd $SDK_DIR
+  # remove useless & create index
+  find bin/ -type f $(printf " ! -name %s_*" $(cat $CUR_DIR/packages.txt)) | xargs rm -f
   make package/index V=s
+
   cd $CUR_DIR
 }
 
@@ -112,8 +87,5 @@ copy_packages() {
 
 download_sdk
 get_sources
-update_config
 build_packages
-remove_useless
-create_index
 copy_packages
